@@ -1,7 +1,5 @@
 package com.rshea.wmtpeymano.ui.uistate
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rshea.wmtpeymano.repository.CountryRepository
@@ -14,8 +12,8 @@ import kotlinx.coroutines.launch
 import java.io.IOException
 
 class CountryViewModel(
-    private val countryRepository: CountryRepository, application: Application
-): AndroidViewModel(application) {
+    private val countryRepository: CountryRepository
+): ViewModel() {
 
     private val _uiState = MutableStateFlow(CountryUiState(isFetchingData = false, countriesItems = listOf(), userMessages = ""))
     val uiState: StateFlow<CountryUiState> = _uiState.asStateFlow()

@@ -2,6 +2,7 @@ package com.rshea.wmtpeymano.ui
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
@@ -12,6 +13,7 @@ import com.rshea.wmtpeymano.R
 import com.rshea.wmtpeymano.databinding.ActivityMainBinding
 import com.rshea.wmtpeymano.ui.uistate.CountryItemUiState
 import com.rshea.wmtpeymano.ui.uistate.CountryViewModel
+import com.rshea.wmtpeymano.ui.uistate.CountryViewModelFactory
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
@@ -21,10 +23,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var countryRecyclerAdapter: CountryRecyclerAdapter
     private lateinit var binding : ActivityMainBinding
     private lateinit var countryViewModel: CountryViewModel
+    private lateinit var countryModelFactory: CountryViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        countryViewModel  = ViewModelProvider.AndroidViewModelFactory.getInstance(application).create(CountryViewModel::class.java)
+        countryModelFactory = CountryViewModelFactory()
+        countryViewModel  = ViewModelProvider(this, countryModelFactory)[CountryViewModel::class.java]
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.progressBar.visibility = View.VISIBLE
