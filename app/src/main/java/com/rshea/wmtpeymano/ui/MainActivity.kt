@@ -14,10 +14,6 @@ import com.rshea.wmtpeymano.databinding.ActivityMainBinding
 import com.rshea.wmtpeymano.ui.uistate.CountryItemUiState
 import com.rshea.wmtpeymano.ui.uistate.CountryViewModel
 import com.rshea.wmtpeymano.ui.uistate.CountryViewModelFactory
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
