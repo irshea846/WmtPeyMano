@@ -14,6 +14,7 @@ import com.rshea.wmtpeymano.databinding.ActivityMainBinding
 import com.rshea.wmtpeymano.ui.uistate.CountryItemUiState
 import com.rshea.wmtpeymano.ui.uistate.CountryViewModel
 import com.rshea.wmtpeymano.ui.uistate.CountryViewModelFactory
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
@@ -34,17 +35,15 @@ class MainActivity : AppCompatActivity() {
         binding.progressBar.visibility = View.VISIBLE
 
         lifecycleScope.launch {
-            countryViewModel.fetchCountries()
             repeatOnLifecycle(Lifecycle.State.STARTED) {
+                countryViewModel.fetchCountries()
                 countryViewModel.uiState
                     .map { it.isFetchingData }
-                    .distinctUntilChanged()
                     .collect { binding.progressBar.isVisible = it }
                 countryViewModel.uiState
                     .map { it.countriesItems }
-                    .distinctUntilChanged()
-                    .run {
-                        initRecyclerView(binding, this.first())
+                    .collect {
+                        initRecyclerView(binding, it)
                     }
             }
         }

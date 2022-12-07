@@ -14,5 +14,4 @@ class CountryViewModelFactory : ViewModelProvider.Factory{
         }
         throw IllegalArgumentException("Unknown View Model Class")
     }
-
 }
