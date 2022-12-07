@@ -20,7 +20,7 @@ class CountryViewModel(
 
     private var fetchJob: Job? = null
 
-    suspend fun fetchCountries() {
+    fun fetchCountries() {
         fetchJob?.cancel()
         fetchJob = viewModelScope.launch {
             try {

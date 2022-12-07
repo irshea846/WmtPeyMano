@@ -33,18 +33,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.progressBar.visibility = View.VISIBLE
+        countryViewModel.fetchCountries()
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                countryViewModel.fetchCountries()
-                countryViewModel.uiState
-                    .map { it.isFetchingData }
-                    .collect { binding.progressBar.isVisible = it }
-                countryViewModel.uiState
-                    .map { it.countriesItems }
-                    .collect {
-                        initRecyclerView(binding, it)
-                    }
+                countryViewModel.uiState.collect {
+                    binding.progressBar.isVisible = it.isFetchingData
+                    initRecyclerView(binding, it.countriesItems)
+                }
             }
         }
     }
