@@ -13,66 +13,87 @@
         android:layout_width="match_parent"
         android:layout_height="20dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/first_line"/>
+        app:layout_constraintBottom_toTopOf="@id/country_content"/>
 
     <LinearLayout
-        android:id="@+id/first_line"
+        android:id="@+id/country_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/first_blank"
-        app:layout_constraintBottom_toTopOf="@id/second_blank">
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:textSize="20sp"
-            tools:text="American Samoa, "/>
-        <TextView
-            android:id="@+id/region"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:textSize="20sp"
-            tools:text="OC"/>
-        <TextView
-            android:id="@+id/code"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
-            android:gravity="end"
-            android:textSize="20sp"
-            tools:text="AS"/>
-    </LinearLayout>
-
-    <View
-        android:id="@+id/second_blank"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        app:layout_constraintTop_toBottomOf="@id/first_line"
-        app:layout_constraintBottom_toTopOf="@id/second_line"/>
-
-    <LinearLayout
-        android:id="@+id/second_line"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/second_blank"
         app:layout_constraintBottom_toTopOf="@id/third_blank">
-        <TextView
-            android:id="@+id/capital"
-            android:layout_width="wrap_content"
+
+        <ImageView
+            android:id="@+id/flag"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="start"
+            android:gravity="center_vertical"
+            android:contentDescription="Country Flag" />
+
+        <LinearLayout
+            android:id="@+id/country_detail"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:textSize="20sp"
-            tools:text="Pago Pago"/>
+            android:orientation="vertical"
+            android:layout_gravity="end"
+            android:layout_weight="3">
+
+            <LinearLayout
+                android:id="@+id/first_line"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textSize="15sp"
+                    tools:text="Wallis and Futuna, "/>
+                <TextView
+                    android:id="@+id/region"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textSize="15sp"
+                    tools:text="OC"/>
+                <TextView
+                    android:id="@+id/code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="end"
+                    android:textSize="15sp"
+                    tools:text="WF"/>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/second_blank"
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <LinearLayout
+                android:id="@+id/second_line"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/capital"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textSize="15sp"
+                    tools:text="Pago Pago"/>
+            </LinearLayout>
+        </LinearLayout>
+
     </LinearLayout>
 
     <View
         android:id="@+id/third_blank"
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        app:layout_constraintTop_toBottomOf="@id/second_line"/>
+        app:layout_constraintTop_toBottomOf="@id/country_content"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

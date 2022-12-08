@@ -25,7 +25,7 @@ class CountryRepository(
                     if (response.isSuccessful) {
                         val countryItemUiStateList: MutableList<CountryItemUiState> = mutableListOf()
                         response.body()!!.forEach{
-                            countryItemUiStateList.add(CountryItemUiState(name = it.name, region = it.region, code = it.code, capital = it.capital))
+                            countryItemUiStateList.add(CountryItemUiState(name = it.name, region = it.region, code = it.code, capital = it.capital, flag = it.flag))
                         }
                         continuation.resume(CountryUiState(false, countryItemUiStateList, ""))
                     } else {
